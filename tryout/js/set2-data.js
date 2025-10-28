@@ -1,14 +1,8 @@
-// SET 2 - ADVANCED LEVEL (40 soal)
-window.quizData = [
-    {
-        question: "If I had known about the meeting, I ______ there.",
-        options: [
-            "A. would go",
-            "B. will go", // tryout/js/set2-data.js
+// tryout/js/set2-data.js
 // SET LATIHAN 2 – ADVANCED LEVEL
 // 40 soal | 75 menit | Pilihan Ganda (A–D)
 
-const quizData = [
+window.quizData = [
   // PART 1 – GRAMMAR AND STRUCTURE (15 soal)
   {
     category: "Grammar",
@@ -239,7 +233,7 @@ const quizData = [
     category: "Error Recognition",
     question: "The teacher told that we should study harder.",
     options: ["told", "that", "we", "should"],
-    correctAnswer: 0
+    correctAnswer: 1
   },
   {
     category: "Error Recognition",
@@ -248,7 +242,7 @@ const quizData = [
     correctAnswer: 1
   },
 
-  // PART 5 – FUNCTIONAL EXPRESSION AND REASONING (3 soal)
+  // PART 5 – FUNCTIONAL EXPRESSION AND REASONING (4 soal) — ditambah 1 agar total 40
   {
     category: "Functional Expression",
     question: "A: “Would you mind opening the window?”<br>B: “____”",
@@ -266,44 +260,16 @@ const quizData = [
     question: "A: “What do you think of the new canteen?”<br>B: “____”",
     options: ["I haven’t been there yet.", "I think of school.", "It’s near the gate.", "I don’t think so."],
     correctAnswer: 0
+  },
+  {
+    category: "Functional Expression",
+    question: "A: “Could you tell me the way to the station?”<br>B: “____”",
+    options: ["Turn left at the corner.", "I don’t know.", "Yes, I could.", "No, thank you."],
+    correctAnswer: 0
   }
-];
-            "C. would have gone",
-            "D. have gone"
-        ],
-        correctAnswer: "C",
-        explanation: "Third conditional: had + past participle, would have + past participle",
-        category: "Grammar"
-    },
-    {
-        question: "The students were made ______ the classroom after the test.",
-        options: [
-            "A. clean",
-            "B. cleaning",
-            "C. to clean", 
-            "D. cleaned"
-        ],
-        correctAnswer: "A",
-        explanation: "Causative 'make' + object + base verb (clean)",
-        category: "Grammar"
-    },
-    {
-        question: "The letter ______ yesterday hasn't been delivered yet.",
-        options: [
-            "A. sending",
-            "B. sent",
-            "C. to send",
-            "D. sends"
-        ],
-        correctAnswer: "B",
-        explanation: "Reduced relative clause: 'that was sent' menjadi 'sent'",
-        category: "Grammar"
-    },
-    // ... 37 soal lainnya dari SET 2 ADVANCED
 ];
 
 window.quizConfig = {
-    timeLimit: 75, // 75 minutes untuk Advanced
-    totalQuestions: 40,
+    timeLimit: 75, // menit
     setNumber: 2
 };

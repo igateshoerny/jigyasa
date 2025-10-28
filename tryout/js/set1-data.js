@@ -2,7 +2,7 @@
 // SET LATIHAN 1 – GENERAL LEVEL
 // 40 soal | 60 menit | Pilihan Ganda (A–D)
 
-const quizData = [
+quizData = [
   // PART 1 – GRAMMAR AND STRUCTURE (12 soal)
   {
     category: "Grammar",
@@ -257,4 +257,5 @@ const quizData = [
     options: ["I hope so.", "Thanks.", "You too.", "It’s okay."],
     correctAnswer: 1
   }
+
 ];

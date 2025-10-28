@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - JIGYASA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* JIGYASA PREMIUM STYLES - Generic Coming Soon */
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --teal: #2a9d8f;
+            --teal-light: #4db6ac;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark-text: #2d3748;
+            --red-alert: #e63946;
+            --green-success: #2a9d8f;
+            --gradient: linear-gradient(135deg, #1e3a5f 0%, #2a9d8f 50%, #d4af37 100%);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--off-white) 0%, #f0f4f8 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 1rem; 
+        }
+
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700; 
+            letter-spacing: 1px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 2Bride, 0.95rem);
+            opacity: 0.9;
+            transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .back-home:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Main Content - Coming Soon */
+        .coming-soon-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(2rem, 6vw, 4rem) 1rem;
+        }
+
+        .coming-soon-card {
+            background: white;
+            border-radius: 20px;
+            padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 5vw, 3rem);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .coming-soon-icon {
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .coming-soon-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .coming-soon-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .coming-soon-desc {
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            color: #555;
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .progress-container {
+            background: var(--light-gray);
+            border-radius: 50px;
+            height: 14px;
+            margin: 2rem auto;
+            max-width: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            background: var(--gradient);
+            height: 100%;
+            width: 0%;
+            border-radius: 50px;
+            animation: fillProgress 2.2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes fillProgress {
+            to { width: 78%; }
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--teal);
+            font-weight: 600;
+            margin-top: 0.6rem;
+        }
+
+        .tip-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2.5rem auto 0;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: 'SEDANG DIPROSES';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* Motivational Quote */
+        .motivational-quote {
+            background: var(--gradient);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            font-style: italic;
+        }
+
+        .quote-text {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .quote-motto {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: var(--navy);
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1rem;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .nav-button:hover {
+            background: var(--teal);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: clamp(1.4rem, 3vw, 1.8rem) 0;
+            margin-top: auto;
+        }
+
+        .main-footer p {
+            opacity: 0.9;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-weight: 500;
+        }
+
+        .main-footer strong {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.2rem;
+            }
+            
+            .coming-soon-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .coming-soon-icon {
+                font-size: 3.5rem;
+            }
+            
+            .tip-box {
+                margin: 2rem auto 0;
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>JIGYASA</h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="back-home">Back to Materi</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Coming Soon Main Content -->
+    <main class="coming-soon-wrapper">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">Under Construction</div>
+            <h2 class="coming-soon-title">Coming Soon</h2>
+            <p class="coming-soon-subtitle">Materi Sedang Dalam Proses Pengembangan</p>
+            <p class="coming-soon-desc">
+                Kami sedang mempersiapkan konten premium dengan strategi terbaik, tips jitu, dan pendekatan sistematis 
+                untuk membantu kamu menguasai materi olimpiade bahasa Inggris. 
+                Segera hadir dengan kualitas JIGYASA yang kamu kenal!
+            </p>
+
+            <div class="progress-container">
+                <div class="progress-fill"></div>
+            </div>
+            <p class="progress-label">78% Selesai – Hampir Siap!</p>
+
+            <div class="tip-box">
+                <p>
+                    <strong>Pantau terus update terbaru!</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Motivational Quote -->
+    <div class="motivational-quote">
+        <div class="quote-text">
+            "Setiap materi hebat dimulai dari proses. Sabar, juara sedang dibentuk."
+        </div>
+        <div class="quote-motto">
+            PREPARE • MASTER • DOMINATE • CHAMPION!
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="content-nav">
+        <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="nav-button">Menu Learn</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2025 <strong>JIGYASA</strong><br>
+            Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        // Optional smooth reveal
+        window.addEventListener('load', () => {
+            document.querySelector('.coming-soon-card').style.opacity = '1';
+            document.querySelector('.coming-soon-card').style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>

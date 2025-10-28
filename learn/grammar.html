@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grammar & Structure - JIGYASA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* JIGYASA PREMIUM STYLES - Accordion Version */
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --teal: #2a9d8f;
+            --teal-light: #4db6ac;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark-text: #2d3748;
+            --red-alert: #e63946;
+            --green-success: #2a9d8f;
+            --gradient: linear-gradient(135deg, #1e3a5f 0%, #2a9d8f 50%, #d4af37 100%);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--off-white) 0%, #f0f4f8 100%);
+            color: var(--dark-text);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header - Sama seperti index.html */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 1rem; 
+        }
+
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700; 
+            letter-spacing: 1px;
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+
+        .main-nav a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            opacity: 0.9;
+         transition: opacity 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .back-home:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Hero Section - Sama seperti index.html */
+        .hero {
+            padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Accordion Container */
+        .accordion-container {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1rem;
+        }
+
+        /* Accordion Items dengan animasi fade in */
+        .accordion-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .accordion-item:nth-child(1) { animation-delay: 0.1s; }
+        .accordion-item:nth-child(2) { animation-delay: 0.2s; }
+        .accordion-item:nth-child(3) { animation-delay: 0.3s; }
+        .accordion-item:nth-child(4) { animation-delay: 0.4s; }
+        .accordion-item:nth-child(5) { animation-delay: 0.5s; }
+        .accordion-item:nth-child(6) { animation-delay: 0.6s; }
+        .accordion-item:nth-child(7) { animation-delay: 0.7s; }
+        .accordion-item:nth-child(8) { animation-delay: 0.8s; }
+        .accordion-item:nth-child(9) { animation-delay: 0.9s; }
+        .accordion-item:nth-child(10) { animation-delay: 1s; }
+
+        @keyframes fadeInUp {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        /* Accordion Header */
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            background: var(--navy);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background: var(--teal);
+        }
+
+        .accordion-header::after {
+            content: '▼';
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active::after {
+            transform: rotate(180deg);
+        }
+
+        .chapter-badge {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+
+        /* Accordion Content */
+        .accordion-content {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+        }
+
+        .accordion-content.active {
+            padding: 2rem;
+            max-height: 5000px;
+        }
+
+        /* Strategy Sections */
+        .strategy-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .strategy-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .strategy-title {
+            font-size: 1.3rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .war-card {
+            background: var(--off-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--teal);
+        }
+
+        .war-card.attack {
+            border-left-color: var(--red-alert);
+            background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%);
+        }
+
+        .war-card.victory {
+            border-left-color: var(--gold);
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+        }
+
+        .card-title {
+            color: var(--navy);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .killer-tip {
+            background: rgba(230, 57, 70, 0.05);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .killer-tip::before {
+            content: '💥 KILLER TIP';
+            position: absolute;
+            top: -10px;
+            left: 1rem;
+            background: var(--red-alert);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .golden-rule {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .golden-rule::before {
+            content: '🏆 GOLDEN RULE';
+            position: absolute;
+            top: -10px;
+            left: 1rem;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* Motivational Section */
+        .motivational-section {
+            background: var(--gradient);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .war-quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .war-motto {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        .content-nav {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            gap: 2rem;
+        }
+
+        .nav-button {
+            background: var(--navy);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+            font-weight: 500;
+            flex: 1;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .nav-button:hover {
+            background: var(--teal);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-button {
+            background: var(--navy);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            background: var(--teal);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: clamp(1.4rem, 3vw, 1.8rem) 0;
+            margin-top: auto;
+        }
+
+        .main-footer p {
+            opacity: 0.9;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-weight: 500;
+        }
+
+        .main-footer strong {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+                .content-nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                margin: 2rem auto;
+            }
+            
+            .main-nav {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .accordion-header {
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .accordion-content.active {
+                padding: 1.5rem;
+            }
+            
+            .content-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-button {
+                justify-content: center;
+                padding: 16px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>JIGYASA</h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="back-home">Back to Materi</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h2>Grammar & Structure</h2>
+            <p>Master tenses, clauses, sentence patterns, dan semua aspek grammar untuk sukses di olimpiade bahasa Inggris</p>
+        </div>
+    </section>
+
+    <!-- Accordion Content - 10 BAB LENGKAP -->
+    <div class="accordion-container">
+        
+        <!-- BAB 1: TENSES MASTERY -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 1</span>
+                Tenses Mastery
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">⏰ SPEED DIAL IDENTIFIKASI</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Time Marker = Auto Answer</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Now, currently</strong> → Present Continuous</li>
+                                <li><strong>Every day, always</strong> → Simple Present</li>
+                                <li><strong>Already, since, for</strong> → Present Perfect</li>
+                                <li><strong>Yesterday, ago, last</strong> → Simple Past</li>
+                                <li><strong>Before, by the time</strong> → Past Perfect</li>
+                                <li><strong>Tomorrow, next week</strong> → Future Forms</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Bertemu since/for? 95% jawabannya Present Perfect!</strong><br>
+                            Lihat yesterday/last? Langsung Simple Past, no thinking!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎯 TENSE CONSISTENCY</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">💡 Timeline Thinking</div>
+                        <div class="card-content">
+                            <p><strong>Double Action Test:</strong> Jika ada 2 kejadian lampau, yang lebih dulu → Past Perfect</p>
+                            <p><strong>Present Effect Check:</strong> Hasilnya masih ada sekarang? → Present Perfect</p>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Stative Verbs Paksa Simple:</strong> Know, like, love, want, understand → PAKSA Simple Present meski ada "now"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 2: CONDITIONALS -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 2</span>
+                Conditionals & Wishes
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🔀 DECISION MATRIX 5 DETIK</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Conditional Patterns</div>
+                        <div class="card-content">
+                            <p><strong>If + Present Simple → WILL + V1</strong> (Real Future)</p>
+                            <p><strong>If + Past Simple → WOULD + V1</strong> (Unreal Present)</p>
+                            <p><strong>If + Past Perfect → WOULD HAVE + V3</strong> (Unreal Past)</p>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Were for All:</strong> Dalam conditional, SEMUA subjek pakai WERE<br>
+                            <strong>No Will in If:</strong> Dalam klausa if, TIDAK PERNAH pakai will/would
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎭 WISH PATTERNS</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Wish Matrix</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Wish + Past Simple</strong> → ingin sekarang berubah</li>
+                                <li><strong>Wish + Past Perfect</strong> → penyesalan lampau</li>
+                                <li><strong>Wish + Would</strong> → harap orang lain berubah</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Wish I were → itu conditional thinking!</strong><br>
+                            If only = wish dengan emphasis lebih kuat!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 3: PASSIVE VOICE -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 3</span>
+                Passive Voice & Causative
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🔄 2-SECOND RECOGNITION TEST</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">🎯 Passive Voice Detection</div>
+                        <div class="card-content">
+                            <p><strong>Kalimat bisa diakhiri "by someone"? → Passive candidate</strong></p>
+                            <p><strong>Subjeknya menerima aksi? → Passive confirmed</strong></p>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Subjeknya benda mati? 80% passive voice!</strong><br>
+                            Lihat is/are/was/were + V3? Itu passive, period!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">⚡ CAUSATIVE VERBS</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Causative Patterns</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Make + object + V1</strong> → memaksa</li>
+                                <li><strong>Have + object + V1</strong> → menyuruh</li>
+                                <li><strong>Get + object + to V1</strong> → membujuk</li>
+                                <li><strong>Let + object + V1</strong> → mengizinkan</li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Get = to V1, yang lain = bare infinitive!</strong><br>
+                            Make = paksaan, Have = permintaan formal, Get = butuh usaha
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 4: RELATIVE CLAUSES -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 4</span>
+                Relative Clauses & Reduction
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎯 COMMA KILLER STRATEGY</h3>
+                    <div class="war-card">
+                        <div class="card-title">⚡ Comma Decision Rule</div>
+                        <div class="card-content">
+                            <p><strong>Ada koma → Non-defining → which/who (NO THAT!)</strong></p>
+                            <p><strong>Tidak ada koma → Defining → that/which/who</strong></p>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Koma sebelum which? Itu non-defining, which is CORRECT!</strong><br>
+                            <strong>That setelah koma? AUTOMATIC WRONG!</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🔧 CLAUSE REDUCTION</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Reduction Patterns</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Aktif → V-ing</strong>: The man running...</li>
+                                <li><strong>Pasif → V3</strong>: The book written...</li>
+                                <li><strong>To show purpose → to V1</strong>: I need a pen to write</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Non-defining clauses TIDAK BISA direduksi!</strong><br>
+                            Who is/which is → bisa dihilangkan jadi V-ing/V3
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 5: MODALS -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 5</span>
+                Modals & Semi-modals
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">⚡ CERTAINTY METER</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Certainty Scale</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>100%</strong>: must, have to (no choice)</li>
+                                <li><strong>90%</strong>: should, ought to (strong suggestion)</li>
+                                <li><strong>50%</strong>: may, might, could (possibility)</li>
+                                <li><strong>0%</strong>: can't, couldn't (impossible)</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Lihat have + V3 setelah modal? Itu tentang MASA LALU!</strong><br>
+                            Must vs Have to? Must = kewajiban internal, Have to = external
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🕒 PAST MODALS</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">💡 Past Probability</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Must have + V3</strong> → pasti terjadi di masa lalu</li>
+                                <li><strong>Should have + V3</strong> → seharusnya terjadi (tapi tidak)</li>
+                                <li><strong>Could have + V3</strong> → bisa saja terjadi (tapi tidak)</li>
+                                <li><strong>Would have + V3</strong> → akan terjadi (tapi tidak)</li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Modal + have + V3 = berbicara tentang MASA LALU!</strong><br>
+                            Could vs Could have? Could = present ability, Could have = past possibility
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 6: SUBJUNCTIVE -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 6</span>
+                Subjunctive & Unreal Mood
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎭 SUBJUNCTIVE TRIGGERS</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Subjunctive Patterns</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Verbs</strong>: suggest, recommend, insist, demand</li>
+                                <li><strong>Expressions</strong>: It's time, I wish, I'd rather</li>
+                                <li><strong>Adjectives</strong>: important, necessary, essential</li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>That + SUBJEK + BARE INFINITIVE</strong> (tanpa to, tanpa s/es)<br>
+                            Example: "I suggest that he STUDY harder"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">⏰ UNREAL PAST</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Unreal Past Patterns</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>It's time + past simple</strong> → sudah waktunya (tapi belum)</li>
+                                <li><strong>I'd rather + past simple</strong> → lebih suka (tapi tidak)</li>
+                                <li><strong>As if/As though + past</strong> → seolah-olah (tapi tidak)</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>It's high time = It's about time = sama pattern!</strong><br>
+                            I'd rather you TOLD me → bukan TELL!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 7: INVERSION -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 7</span>
+                Inversion & Emphasis
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🔄 NEGATIVE INVERSION</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">🎯 Inversion Triggers</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Never, Seldom, Rarely</strong> di awal kalimat</li>
+                                <li><strong>Hardly, Scarcely, No sooner</strong> di awal</li>
+                                <li><strong>Not only, Little, Only then</strong> di awal</li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Negative word + AUXILIARY + SUBJEK + MAIN VERB</strong><br>
+                            Example: "Never have I seen such beauty"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">⚡ CONDITIONAL INVERSION</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Conditional tanpa IF</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Had I known</strong> → Instead of "If I had known"</li>
+                                <li><strong>Were I you</strong> → Instead of "If I were you"</li>
+                                <li><strong>Should you need</strong> → Instead of "If you should need"</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Hilangkan IF, balik subject-verb!</strong><br>
+                            Had I known = If I had known → sama meaning, lebih formal!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 8: SUBJECT-VERB AGREEMENT -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 8</span>
+                Subject-Verb Agreement
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">📝 HEAD SUBJECT RULE</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 3-STEP QUICK FIX</div>
+                        <div class="card-content">
+                            <ol>
+                                <li><strong>Temukan HEAD SUBJECT</strong> (abaikan modifier)</li>
+                                <li><strong>Singular/Plural?</strong></li>
+                                <li><strong>Pilih verb yang match</strong></li>
+                            </ol>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Coret intervening phrases dulu!</strong><br>
+                            The man, along with his children, IS going → coret ",along with his children,"
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎯 SPECIAL CASES</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">💡 Tricky Agreement Rules</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Either/or, Neither/nor</strong> → ikuti yang TERDEKAT</li>
+                                <li><strong>Collective nouns</strong> → sebagai unit (singular)</li>
+                                <li><strong>Expressions of quantity</strong> → ikuti head noun</li>
+                                <li><strong>Indefinite pronouns</strong> → mostly singular</li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Neither they nor I AM → ikut 'I'!</strong><br>
+                            The team IS playing (sebagai unit) vs The team ARE arguing (masing-masing)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 9: GERUNDS & INFINITIVES -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 9</span>
+                Gerunds & Infinitives
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">📖 VERB GROUPS STRATEGY</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Memory Hack Groups</div>
+                        <div class="card-content">
+                            <p><strong>GROUP 1: Enjoy Mindset</strong> (selalu + gerund)</p>
+                            <ul>
+                                <li>Enjoy, avoid, finish, practice, mind, consider</li>
+                                <li><em>Mnemonic: "Enjoy Avoiding Finished Practice Mindfully"</em></li>
+                            </ul>
+                            <p><strong>GROUP 2: Decision Mindset</strong> (selalu + infinitive)</p>
+                            <ul>
+                                <li>Want, decide, hope, plan, promise, offer</li>
+                                <li><em>Mnemonic: "Want to Decide to Hope to Plan to Promise"</em></li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Enjoy to play? WRONG! Enjoy playing? CORRECT!</strong><br>
+                            <strong>Want playing? WRONG! Want to play? CORRECT!</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🎯 SPECIAL CASES</h3>
+                    <div class="war-card attack">
+                        <div class="card-title">🚀 Verbs with Different Meanings</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Remember to call</strong> (future action)</li>
+                                <li><strong>Remember calling</strong> (past memory)</li>
+                                <li><strong>Stop to think</strong> (pause untuk melakukan)</li>
+                                <li><strong>Stop thinking</strong> (berhenti melakukan)</li>
+                                <li><strong>Try to solve</strong> (berusaha)</li>
+                                <li><strong>Try solving</strong> (eksperimen)</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Perhatikan perbedaan makna!</strong><br>
+                            Forget to lock (lupa mengunci) vs Forget locking (lupa sudah mengunci)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAB 10: REPORTED SPEECH -->
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <span class="chapter-badge">BAB 10</span>
+                Reported Speech & Questions
+            </div>
+            <div class="accordion-content">
+                <div class="strategy-section">
+                    <h3 class="strategy-title">💬 TENSE BACKSHIFT</h3>
+                    <div class="war-card victory">
+                        <div class="card-title">🎯 Automatic Transformation</div>
+                        <div class="card-content">
+                            <ul>
+                                <li><strong>Present Simple → Past Simple</strong></li>
+                                <li><strong>Present Continuous → Past Continuous</strong></li>
+                                <li><strong>Present Perfect → Past Perfect</strong></li>
+                                <li><strong>Past Simple → Past Perfect</strong></li>
+                                <li><strong>Will → Would</strong></li>
+                                <li><strong>Can → Could</strong></li>
+                            </ul>
+                        </div>
+                        <div class="golden-rule">
+                            <strong>Geser satu step ke belakang dalam timeline!</strong><br>
+                            He said he IS coming? WRONG! He said he WAS coming? CORRECT!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="strategy-section">
+                    <h3 class="strategy-title">🕒 TIME & PRONOUN SHIFT</h3>
+                    <div class="war-card">
+                        <div class="card-title">💡 Context Adjustment</div>
+                        <div class="card-content">
+                            <p><strong>Pronoun Changes:</strong></p>
+                            <ul>
+                                <li>I → he/she</li>
+                                <li>we → they</li>
+                                <li>my → his/her</li>
+                                <li>our → their</li>
+                            </ul>
+                            <p><strong>Time Expression Changes:</strong></p>
+                            <ul>
+                                <li>now → then</li>
+                                <li>today → that day</li>
+                                <li>yesterday → the day before</li>
+                                <li>tomorrow → the next day</li>
+                            </ul>
+                        </div>
+                        <div class="killer-tip">
+                            <strong>Bayangkan diri sebagai reporter!</strong><br>
+                            "I am busy now" → He said he WAS busy THEN
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Motivational Section -->
+    <div class="motivational-section">
+        <div class="war-quote">
+            "Jangan overthink! Grammar punya patterns yang predictable!"
+        </div>
+        <div class="war-motto">
+            IDENTIFY • APPLY • ELIMINATE • VICTORY!
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="content-nav">
+        <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="nav-button">← Menu Learn</a>
+        <a href="https://igateshoerny.github.io/jigyasa/learn/vocabulary.html" class="nav-button">Vocabulary & Usage →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 <strong>JIGYASA</strong><br>
+            Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const isActive = content.classList.contains('active');
+
+                // Close all other accordions
+                document.querySelectorAll('.accordion-content').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.maxHeight = null;
+                });
+                document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+
+                // Open current if not active
+                if (!isActive) {
+                    header.classList.add('active');
+                    content.classList.add('active');
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    
+                    // Smooth scroll to keep header in view
+                    header.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            });
+        });
+
+        // Open first accordion by default
+        // document.querySelector('.accordion-header').click();
+    </script>
+</body>
+</html>

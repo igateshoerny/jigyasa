@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Recognition - Jigyasa</title>
+    <style>
+        /* JIGYASA INLINE STYLES */
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --teal: #2a9d8f;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark-text: #2d3748;
+            --correct: #2a9d8f;
+            --incorrect: #e76f51;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--off-white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background: var(--navy);
+            color: white;
+            padding: 1rem 0;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .logo span {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .main-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .main-nav a:hover,
+        .main-nav a.active {
+            background-color: var(--teal);
+        }
+        
+        /* Content Styles */
+        .content-header {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .content-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .content-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .learn-content {
+            padding: 3rem 0;
+            flex: 1;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+        
+        .toc h2 {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--teal);
+            padding-bottom: 0.5rem;
+        }
+        
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            list-style: none;
+        }
+        
+        .toc-list a {
+            color: var(--dark-text);
+            text-decoration: none;
+            padding: 1rem;
+            border-left: 4px solid var(--teal);
+            background: var(--off-white);
+            border-radius: 4px;
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .toc-list a:hover {
+            background: var(--teal);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        /* Lesson Sections */
+        .lesson-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .lesson-section h2 {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 0.5rem;
+        }
+        
+        .lesson-section h3 {
+            color: var(--teal);
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        .error-example {
+            background: var(--off-white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--incorrect);
+        }
+        
+        .correction {
+            background: #d4edda;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 0.5rem 0;
+            border-left: 4px solid var(--correct);
+        }
+        
+        .detector-box {
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--teal);
+            margin: 1.5rem 0;
+        }
+        
+        .tip-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background: var(--navy);
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: var(--off-white);
+        }
+        
+        /* Practice Section */
+        .practice-section {
+            background: var(--off-white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            border: 2px solid var(--teal);
+        }
+        
+        .sentence-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px solid var(--light-gray);
+            font-family: 'Courier New', monospace;
+        }
+        
+        .error-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .error-option {
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .error-option:hover {
+            border-color: var(--teal);
+        }
+        
+        .error-option.selected {
+            border-color: var(--teal);
+            background: #e0f2f1;
+        }
+        
+        .quiz-result {
+            margin-top: 1rem;
+            padding: 1.5rem;
+            border-radius: 6px;
+            display: none;
+        }
+        
+        .quiz-result.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        
+        .quiz-result.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        
+        /* Navigation Buttons */
+        .content-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--light-gray);
+        }
+        
+        .nav-button {
+            background: var(--navy);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-button:hover {
+            background: var(--teal);
+        }
+        
+        /* Footer Styles */
+        .main-footer {
+            background-color: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: auto;
+        }
+        
+        .main-footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .main-nav {
+                justify-content: center;
+            }
+            
+            .content-header h1 {
+                font-size: 2rem;
+            }
+            
+            .toc-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .lesson-section {
+                padding: 1.5rem;
+            }
+            
+            .error-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <h1>JIGYASA</h1>
+                <span>Learn, Practice and Achieve.</span>
+            </div>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="index.html">Learn</a>
+                <a href="../tryout/index.html">Try Out</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="content-header">
+        <div class="container">
+            <h1>Error Recognition</h1>
+            <p>Kuasi teknik menemukan kesalahan grammar, vocabulary, preposition, dan word order dengan sistem detektor 4 langkah</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="learn-content">
+            <!-- Table of Contents -->
+            <div class="toc">
+                <h2>📚 Daftar Materi</h2>
+                <ul class="toc-list">
+                    <li><a href="#detector-system">4-Detektor System</a></li>
+                    <li><a href="#subject-verb">Subject-Verb Agreement</a></li>
+                    <li><a href="#tense-errors">Tense Errors</a></li>
+                    <li><a href="#preposition">Preposition Errors</a></li>
+                    <li><a href="#word-order">Word Order</a></li>
+                    <li><a href="#word-form">Word Form Errors</a></li>
+                    <li><a href="#modal-verbs">Modal Verbs</a></li>
+                    <li><a href="#common-mistakes">Common Mistakes</a></li>
+                </ul>
+            </div>
+
+            <!-- 4-Detektor System -->
+            <div class="lesson-section" id="detector-system">
+                <h2>🔍 4-Detektor Error Recognition System</h2>
+                
+                <div class="detector-box">
+                    <h3>Langkah 1: Grammar Detector</h3>
+                    <p>Periksa: Subject-verb agreement, tenses, articles, plural/singular</p>
+                    
+                    <h3>Langkah 2: Vocabulary Detector</h3>
+                    <p>Periksa: Wrong word choice, confusing words, word forms</p>
+                    
+                    <h3>Langkah 3: Preposition Detector</h3>
+                    <p>Periksa: Preposition usage, phrasal verbs, collocations</p>
+                    
+                    <h3>Langkah 4: Word Order Detector</h3>
+                    <p>Periksa: Sentence structure, adjective order, adverb placement</p>
+                </div>
+
+                <div class="example-box">
+                    <strong>Contoh Penerapan:</strong><br><br>
+                    <div class="error-example">
+                        <strong>Sentence:</strong> "She don't like coffee in the morning."
+                    </div>
+                    
+                    <div class="correction">
+                        <strong>Analysis:</strong><br>
+                        • <strong>Grammar Detector</strong>: "don't" → harus "doesn't" (subject "She")<br>
+                        • <strong>Error</strong>: B. don't
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <strong>💡 Tips Olimpiade:</strong> Gunakan sistem 4-detektor secara berurutan!<br>
+                    Mulai dari grammar → vocabulary → preposition → word order
+                </div>
+            </div>
+
+            <!-- Subject-Verb Agreement -->
+            <div class="lesson-section" id="subject-verb">
+                <h2>📝 Subject-Verb Agreement Errors</h2>
+                
+                <h3>Aturan Dasar</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Correct Verb</th>
+                            <th>Common Error</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>She/He/It</td>
+                            <td>V + s/es (likes, goes)</td>
+                            <td>like, go</td>
+                        </tr>
+                        <tr>
+                            <td>I/You/We/They</td>
+                            <td>V base (like, go)</td>
+                            <td>likes, goes</td>
+                        </tr>
+                        <tr>
+                            <td>Plural nouns</td>
+                            <td>V base (students study)</td>
+                            <td>students studies</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="practice-section">
+                    <h3>Practice: Subject-Verb Agreement</h3>
+                    
+                    <div class="sentence-box">
+                        "The students is studying English now."
+                    </div>
+                    
+                    <div class="error-options">
+                        <div class="error-option" data-value="A">A. The</div>
+                        <div class="error-option" data-value="B">B. students</div>
+                        <div class="error-option" data-value="C">C. is</div>
+                        <div class="error-option" data-value="D">D. studying</div>
+                    </div>
+                    
+                    <button onclick="checkErrorAnswer('subject-verb', 'C')" class="nav-button">Cek Jawaban</button>
+                    <div class="quiz-result" id="subject-verb-result"></div>
+
+                    <div class="correction">
+                        <strong>Pembahasan:</strong><br>
+                        • Subject: "The students" (plural)<br>
+                        • Verb harus: "are studying"<br>
+                        • Error: C. is (harusnya are)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tense Errors -->
+            <div class="lesson-section" id="tense-errors">
+                <h2>⏰ Tense Errors</h2>
+                
+                <h3>Common Tense Mistakes</h3>
+                
+                <div class="error-example">
+                    <strong>Present Perfect vs Simple Past:</strong><br>
+                    ❌ "They have went to Jakarta twice."<br>
+                    ✅ "They have <strong>gone</strong> to Jakarta twice."
+                </div>
+                
+                <div class="error-example">
+                    <strong>Present Continuous vs Simple Present:</strong><br>
+                    ❌ "She is go to school every day."<br>
+                    ✅ "She <strong>goes</strong> to school every day."
+                </div>
+
+                <div class="error-example">
+                    <strong>Past Perfect Usage:</strong><br>
+                    ❌ "The students finished the test before the bell rang."<br>
+                    ✅ "The students <strong>had finished</strong> the test before the bell rang."
+                </div>
+
+                <div class="tip-box">
+                    <strong>🚨 Tense Clues:</strong><br>
+                    • <strong>already, since, for</strong> → Present Perfect<br>
+                    • <strong>yesterday, last week, ago</strong> → Simple Past<br>
+                    • <strong>before, by the time</strong> → Past Perfect
+                </div>
+            </div>
+
+            <!-- Preposition Errors -->
+            <div class="lesson-section" id="preposition">
+                <h2>📍 Preposition Errors</h2>
+                
+                <h3>Common Preposition Mistakes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Expression</th>
+                            <th>Correct</th>
+                            <th>Incorrect</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Good at something</td>
+                            <td>good <strong>at</strong> English</td>
+                            <td>good in English</td>
+                        </tr>
+                        <tr>
+                            <td>Interested in</td>
+                            <td>interested <strong>in</strong> science</td>
+                            <td>interested at science</td>
+                        </tr>
+                        <tr>
+                            <td>Keep an eye on</td>
+                            <td>keep an eye <strong>on</strong></td>
+                            <td>keep an eye at</td>
+                        </tr>
+                        <tr>
+                            <td>Depend on</td>
+                            <td>depend <strong>on</strong></td>
+                            <td>depend of</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="practice-section">
+                    <h3>Practice: Preposition Errors</h3>
+                    
+                    <div class="sentence-box">
+                        "I am very interesting in this subject."
+                    </div>
+                    
+                    <div class="error-options">
+                        <div class="error-option" data-value="A">A. am</div>
+                        <div class="error-option" data-value="B">B. very</div>
+                        <div class="error-option" data-value="C">C. interesting</div>
+                        <div class="error-option" data-value="D">D. in</div>
+                    </div>
+                    
+                    <button onclick="checkErrorAnswer('preposition', 'C')" class="nav-button">Cek Jawaban</button>
+                    <div class="quiz-result" id="preposition-result"></div>
+
+                    <div class="correction">
+                        <strong>Pembahasan:</strong><br>
+                        • <strong>Interesting</strong> → benda yang menarik<br>
+                        • <strong>Interested</strong> → subjek yang merasa tertarik<br>
+                        • Error: C. interesting (harusnya interested)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Word Order -->
+            <div class="lesson-section" id="word-order">
+                <h2>🔠 Word Order Errors</h2>
+                
+                <h3>Basic Sentence Structure</h3>
+                <div class="detector-box">
+                    <strong>S + V + O + M</strong> (Subject + Verb + Object + Modifier)<br><br>
+                    • <strong>S</strong>: The students<br>
+                    • <strong>V</strong>: are studying<br>
+                    • <strong>O</strong>: English<br>
+                    • <strong>M</strong>: in the classroom
+                </div>
+
+                <h3>Adjective Order</h3>
+                <div class="example-box">
+                    <strong>OSAShCOMP:</strong> Opinion, Size, Age, Shape, Color, Origin, Material, Purpose<br>
+                    Example: "Beautiful small old round brown Italian wooden cooking pots"
+                </div>
+
+                <div class="error-example">
+                    <strong>Adverb Placement:</strong><br>
+                    ❌ "She speaks well English."<br>
+                    ✅ "She speaks English <strong>well</strong>."
+                </div>
+
+                <div class="error-example">
+                    <strong>Question Word Order:</strong><br>
+                    ❌ "Where you are going?"<br>
+                    ✅ "<strong>Where are you</strong> going?"
+                </div>
+            </div>
+
+            <!-- Word Form Errors -->
+            <div class="lesson-section" id="word-form">
+                <h2>📖 Word Form Errors</h2>
+                
+                <h3>Common Word Form Mistakes</h3>
+                
+                <div class="error-example">
+                    <strong>Adjective vs Adverb:</strong><br>
+                    ❌ "She sings beautiful."<br>
+                    ✅ "She sings <strong>beautifully</strong>."
+                </div>
+                
+                <div class="error-example">
+                    <strong>Noun vs Verb:</strong><br>
+                    ❌ "I need some advise."<br>
+                    ✅ "I need some <strong>advice</strong>." (noun)<br>
+                    ✅ "Can you <strong>advise</strong> me?" (verb)
+                </div>
+
+                <div class="error-example">
+                    <strong>Superlative Form:</strong><br>
+                    ❌ "My mother is the most kind person."<br>
+                    ✅ "My mother is the <strong>kindest</strong> person."
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Noun</th>
+                            <th>Verb</th>
+                            <th>Adjective</th>
+                            <th>Adverb</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Success</td>
+                            <td>success</td>
+                            <td>succeed</td>
+                            <td>successful</td>
+                            <td>successfully</td>
+                        </tr>
+                        <tr>
+                            <td>Beauty</td>
+                            <td>beauty</td>
+                            <td>beautify</td>
+                            <td>beautiful</td>
+                            <td>beautifully</td>
+                        </tr>
+                        <tr>
+                            <td>Care</td>
+                            <td>care</td>
+                            <td>care</td>
+                            <td>careful</td>
+                            <td>carefully</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal Verbs -->
+            <div class="lesson-section" id="modal-verbs">
+                <h2>⚡ Modal Verbs Errors</h2>
+                
+                <h3>Modal + Base Verb</h3>
+                <div class="error-example">
+                    ❌ "He can speaks English fluently."<br>
+                    ✅ "He can <strong>speak</strong> English fluently."
+                </div>
+
+                <h3>Common Modal Mistakes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modal</th>
+                            <th>Usage</th>
+                            <th>Common Error</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>can</td>
+                            <td>ability, possibility</td>
+                            <td>can to speak</td>
+                        </tr>
+                        <tr>
+                            <td>could</td>
+                            <td>past ability, polite request</td>
+                            <td>could speaks</td>
+                        </tr>
+                        <tr>
+                            <td>should</td>
+                            <td>advice, recommendation</td>
+                            <td>should to study</td>
+                        </tr>
+                        <tr>
+                            <td>must</td>
+                            <td>obligation, necessity</td>
+                            <td>must studies</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="practice-section">
+                    <h3>Practice: Modal Verbs</h3>
+                    
+                    <div class="sentence-box">
+                        "He can speaks English fluently."
+                    </div>
+                    
+                    <div class="error-options">
+                        <div class="error-option" data-value="A">A. can</div>
+                        <div class="error-option" data-value="B">B. speaks</div>
+                        <div class="error-option" data-value="C">C. English</div>
+                        <div class="error-option" data-value="D">D. fluently</div>
+                    </div>
+                    
+                    <button onclick="checkErrorAnswer('modal-verbs', 'B')" class="nav-button">Cek Jawaban</button>
+                    <div class="quiz-result" id="modal-verbs-result"></div>
+
+                    <div class="correction">
+                        <strong>Pembahasan:</strong><br>
+                        • Modal verb "can" harus diikuti <strong>base verb</strong><br>
+                        • Error: B. speaks (harusnya speak)<br>
+                        • Rule: Modal + V1 (tanpa s/es, tanpa to)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Mistakes -->
+            <div class="lesson-section" id="common-mistakes">
+                <h2>🚨 Top 10 Common Error Recognition Mistakes</h2>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Error Type</th>
+                            <th>Wrong</th>
+                            <th>Correct</th>
+                            <th>Rule</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Subject-Verb</td>
+                            <td>She don't like</td>
+                            <td>She doesn't like</td>
+                            <td>He/She/It + V+s/es</td>
+                        </tr>
+                        <tr>
+                            <td>Verb Form</td>
+                            <td>They have went</td>
+                            <td>They have gone</td>
+                            <td>Have/has + V3</td>
+                        </tr>
+                        <tr>
+                            <td>Adjective</td>
+                            <td>I am interesting</td>
+                            <td>I am interested</td>
+                            <td>-ing (benda), -ed (perasaan)</td>
+                        </tr>
+                        <tr>
+                            <td>Preposition</td>
+                            <td>interested at</td>
+                            <td>interested in</td>
+                            <td>Fixed preposition</td>
+                        </tr>
+                        <tr>
+                            <td>Word Order</td>
+                            <td>Where you are?</td>
+                            <td>Where are you?</td>
+                            <td>Question word order</td>
+                        </tr>
+                        <tr>
+                            <td>Modal Verb</td>
+                            <td>can speaks</td>
+                            <td>can speak</td>
+                            <td>Modal + V1</td>
+                        </tr>
+                        <tr>
+                            <td>Comparative</td>
+                            <td>more better</td>
+                            <td>better</td>
+                            <td>Double comparative</td>
+                        </tr>
+                        <tr>
+                            <td>Superlative</td>
+                            <td>the most kind</td>
+                            <td>the kindest</td>
+                            <td>1-2 syllables: -est</td>
+                        </tr>
+                        <tr>
+                            <td>Gerund/Infinitive</td>
+                            <td>enjoy to play</td>
+                            <td>enjoy playing</td>
+                            <td>Enjoy + V-ing</td>
+                        </tr>
+                        <tr>
+                            <td>Reported Speech</td>
+                            <td>She asked where I come from</td>
+                            <td>where I came from</td>
+                            <td>Present → Past</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <strong>🎯 Final Tips for Error Recognition:</strong><br>
+                    1. Baca kalimat <strong>secara keseluruhan</strong> dulu<br>
+                    2. Gunakan <strong>4-Detektor System</strong> berurutan<br>
+                    3. Perhatikan <strong>subject-verb agreement</strong><br>
+                    4. Cek <strong>tense consistency</strong><br>
+                    5. Hati-hati dengan <strong>preposition</strong> dan <strong>word form</strong>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="content-nav">
+                <a href="reading.html" class="nav-button">← Reading Comprehension</a>
+                <a href="functional-expression.html" class="nav-button">Functional Expression →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 JIGYASA<br>Developed by Ahmad Zaman Huri</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function for error recognition practice
+        function checkErrorAnswer(questionId, correctAnswer) {
+            const options = document.querySelectorAll(`#${questionId} .error-option`);
+            const resultDiv = document.getElementById(`${questionId}-result`);
+            
+            let selectedOption = null;
+            options.forEach(option => {
+                if (option.classList.contains('selected')) {
+                    selectedOption = option.getAttribute('data-value');
+                }
+            });
+
+            if (!selectedOption) {
+                resultDiv.textContent = "Pilih bagian yang salah terlebih dahulu!";
+                resultDiv.className = "quiz-result incorrect";
+                resultDiv.style.display = 'block';
+                return;
+            }
+
+            if (selectedOption === correctAnswer) {
+                resultDiv.innerHTML = "✅ <strong>Benar!</strong> Kamu berhasil menemukan errornya!";
+                resultDiv.className = "quiz-result correct";
+            } else {
+                resultDiv.innerHTML = `❌ <strong>Masih salah!</strong> Error sebenarnya ada di bagian: ${correctAnswer}`;
+                resultDiv.className = "quiz-result incorrect";
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+
+        // Add click event to all error options
+        document.querySelectorAll('.error-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selection from other options in the same question
+                const parentOptions = this.closest('.error-options');
+                parentOptions.querySelectorAll('.error-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                this.classList.add('selected');
+            });
+        });
+
+        // Smooth scrolling for table of contents
+        document.querySelectorAll('.toc-list a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGYASA - Try Out Set 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* JIGYASA PREMIUM QUIZ STYLES */
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --teal: #2a9d8f;
+            --teal-light: #4db6ac;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark-text: #2d3748;
+            --gradient: linear-gradient(135deg, #1e3a5f 0%, #2a9d8f 50%, #d4af37 100%);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--off-white) 0%, #f0f4f8 100%);
+            color: var(--dark-text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+        }
+
+        .back-home {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .back-home:hover { opacity: 1; }
+
+        .quiz-container {
+            flex: 1;
+            padding: clamp(1.5rem, 4vw, 2.5rem) 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .quiz-header {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .quiz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .quiz-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .quiz-meta strong {
+            color: var(--teal);
+            font-weight: 600;
+        }
+
+        #timer {
+            font-weight: 700;
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+
+        .question-card {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .question-number {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 0.9rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            border-color: var(--teal-light);
+            background: #f8fffe;
+        }
+
+        .option input {
+            margin-right: 0.8rem;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            font-weight: 500;
+            color: #444;
+            flex: 1;
+        }
+
+        .option.selected {
+            border-color: var(--teal);
+            background: #e8f5f4;
+            font-weight: 600;
+        }
+
+        .option.selected .letter {
+            color: var(--teal);
+        }
+
+        .letter {
+            font-weight: 700;
+            color: var(--navy);
+            margin-right: 0.5rem;
+        }
+
+        .quiz-nav {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-prev, .btn-next {
+            background: var(--light-gray);
+            color: #555;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background: #d0d0d0;
+        }
+
+        .btn-submit {
+            background: var(--teal);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #21867a;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .progress-title {
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .question-dots {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .question-dot {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .question-dot.current {
+            background: var(--teal);
+            color: white;
+            transform: scale(1.15);
+            box-shadow: 0 0 0 4px rgba(42,157,143,0.2);
+        }
+
+        .question-dot.answered {
+            background: var(--teal-light);
+            color: white;
+        }
+
+        .question-dot:hover:not(.current) {
+            background: #ccc;
+        }
+
+        .main-footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 1.2rem 0;
+            margin-top: auto;
+            font-size: 0.85rem;
+        }
+
+        .main-footer strong {
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header { flex-direction: column; text-align: center; }
+            .quiz-meta { justify-content: center; }
+            .quiz-nav { justify-content: center; }
+            .question-dots { gap: 0.4rem; }
+            .question-dot { width: 32px; height: 32px; font-size: 0.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .option { padding: 0.8rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body data-set="2">
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>JIGYASA</h1>
+                </div>
+                <a href="index.html" class="back-home">Kembali</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Quiz Container -->
+    <main class="quiz-container">
+        <div class="container">
+            <!-- Header Info -->
+            <div class="quiz-header">
+                <div class="quiz-title">Try Out Set 2 - Advanced</div>
+                <div class="quiz-meta">
+                    <span>Soal: <strong id="total-questions">40</strong></span>
+                    <span>Waktu: <strong id="timer">75:00</strong></span>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="question-card">
+                <div class="question-number" id="question-number">Soal 1</div>
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="quiz-nav">
+                <button id="prevBtn" class="btn btn-prev">Sebelumnya</button>
+                <button id="submitBtn" class="btn btn-submit">Submit</button>
+                <button id="nextBtn" class="btn btn-next">Berikutnya</button>
+            </div>
+
+            <!-- Progress Dots -->
+            <div class="progress-section">
+                <div class="progress-title">Navigasi Soal</div>
+                <div class="question-dots" id="question-dots"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2025 <strong>JIGYASA</strong> • Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/set2-data.js"></script>
+    <script src="js/quiz-engine.js"></script>
+</body>
+</html>

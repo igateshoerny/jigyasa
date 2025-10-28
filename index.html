@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGYASA - Belajar & Try Out Olimpiade Bahasa Inggris</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* JIGYASA CLEAN & PROFESSIONAL INLINE STYLES */
+        :root {
+            --navy: #1e3a5f;
+            --gold: #d4af37;
+            --teal: #2a9d8f;
+            --teal-light: #4db6ac;
+            --off-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --dark-text: #2d3748;
+            --gradient: linear-gradient(135deg, #1e3a5f 0%, #2a9d8f 50%, #d4af37 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background: linear-gradient(to bottom, var(--off-white) 0%, #f0f4f8 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .main-header {
+            background: var(--gradient);
+            color: white;
+            padding: 1.2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .main-header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo span {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Hero */
+        .hero {
+            padding: clamp(3rem, 5vw, 5rem) 0 clamp(2rem, 4vw, 3rem);
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-weight: 400;
+        }
+
+        /* Action Cards */
+        .action-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+            animation: cardSlideIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .action-card:nth-child(1) { animation-delay: 0.1s; }
+        .action-card:nth-child(2) { animation-delay: 0.2s; }
+
+        @keyframes cardSlideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .action-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+        }
+
+        .action-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .action-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-content {
+            padding: clamp(1.5rem, 3vw, 2.5rem);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-icon {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(42,157,143,0.2));
+        }
+
+        .action-card h3 {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .action-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            line-height: 1.6;
+        }
+
+        .card-link {
+            color: var(--teal);
+            font-weight: 600;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card-link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .action-card:hover .card-link {
+            color: var(--teal-light);
+        }
+
+        .action-card:hover .card-link::after {
+            transform: translateX(0.5rem);
+        }
+
+        /* Footer */
+        .main-footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: clamp(1.5rem, 3vw, 2rem) 0;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .main-footer p {
+            opacity: 0.9;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            font-weight: 500;
+        }
+
+        .main-footer strong {
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .action-cards { gap: 1.5rem; }
+            .action-card:hover { transform: translateY(-8px); }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 { font-size: 2rem; }
+            .card-content { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1>JIGYASA</h1>
+                <span>Belajar. Latihan. Menang.</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero & Cards -->
+    <main class="hero">
+        <div class="container">
+            <h2>Selamat Datang</h2>
+            <p class="subtitle">Platform belajar dan try out olimpiade bahasa Inggris untuk siswa MTsT Daarut Tahfizh Al-Ikhlas</p>
+
+            <div class="action-cards">
+                <!-- Learn -->
+                <a href="learn/index.html" class="action-card">
+                    <div class="card-content">
+                        <span class="card-icon">Belajar</span>
+                        <h3>Materi Lengkap</h3>
+                        <p>Gramatika, kosa kata, reading, error recognition, dan functional expression.</p>
+                        <span class="card-link">Mulai Belajar</span>
+                    </div>
+                </a>
+
+                <!-- Try Out -->
+                <a href="tryout/index.html" class="action-card">
+                    <div class="card-content">
+                        <span class="card-icon">Try Out</span>
+                        <h3>Uji Kemampuan</h3>
+                        <p>3 level try out: General, Advanced, dan Simulation Mode.</p>
+                        <span class="card-link">Lihat Try Out</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 <strong>JIGYASA</strong><br>
+            Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
+        </div>
+    </footer>
+</body>
+</html>

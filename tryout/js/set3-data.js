@@ -18,7 +18,7 @@ window.quizData = [
   },
   {
     category: "Grammar",
-    question: "I don’t like coffee, and my friend doesn’t ____",
+    question: "I don’t like coffee, and my friend doesn’t ____.",
     options: ["too", "either", "also", "neither"],
     correctAnswer: 1
   },
@@ -98,7 +98,7 @@ window.quizData = [
   // PART 2 – VOCABULARY AND USAGE (10 soal)
   {
     category: "Vocabulary",
-    question: "The opposite of “ancient” is ____",
+    question: "The opposite of “ancient” is ____.",
     options: ["old", "modern", "past", "classic"],
     correctAnswer: 1
   },
@@ -110,7 +110,7 @@ window.quizData = [
   },
   {
     category: "Vocabulary",
-    question: "The word “affordable” means ____",
+    question: "The word “affordable” means ____.",
     options: ["very expensive", "easy to buy", "impossible to find", "rare"],
     correctAnswer: 1
   },
@@ -158,7 +158,6 @@ window.quizData = [
   },
 
   // PART 3 – READING COMPREHENSION (15 soal)
-  // (Saya asumsikan ada teks bacaan, tapi di dokumen Anda truncated. Saya gunakan contoh dari dokumen)
   {
     category: "Reading",
     question: "How many types of ants are in a colony?",

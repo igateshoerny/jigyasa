@@ -3,798 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary & Usage - Jigyasa</title>
+    <title>Coming Soon - JIGYASA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
-        /* JIGYASA INLINE STYLES */
+        /* JIGYASA PREMIUM STYLES - Generic Coming Soon */
         :root {
             --navy: #1e3a5f;
             --gold: #d4af37;
             --teal: #2a9d8f;
+            --teal-light: #4db6ac;
             --off-white: #f8f9fa;
             --light-gray: #e9ecef;
             --dark-text: #2d3748;
+            --red-alert: #e63946;
+            --green-success: #2a9d8f;
+            --gradient: linear-gradient(135deg, #1e3a5f 0%, #2a9d8f 50%, #d4af37 100%);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, var(--off-white) 0%, #f0f4f8 100%);
             color: var(--dark-text);
-            background-color: var(--off-white);
+            line-height: 1.6;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header Styles */
+
+        /* Header */
         .main-header {
-            background: var(--navy);
+            background: var(--gradient);
             color: white;
             padding: 1rem 0;
+            box-shadow: var(--shadow-sm);
         }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 1rem; 
         }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0.2rem;
+
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
-        
-        .logo span {
-            font-size: 0.9rem;
-            opacity: 0.8;
+
+        .logo h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+            font-weight: 700; 
+            letter-spacing: 1px;
         }
-        
+
         .main-nav {
             display: flex;
             gap: 1.5rem;
         }
-        
-        .main-nav a {
+
+        .back-home {
             color: white;
             text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(0.85rem, 2Bride, 0.95rem);
+            opacity: 0.9;
+            transition: opacity 0.3s;
             padding: 0.5rem 1rem;
             border-radius: 4px;
-            transition: background-color 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
         }
-        
-        .main-nav a:hover,
-        .main-nav a.active {
-            background-color: var(--teal);
+
+        .back-home:hover {
+            opacity: 1;
+            background-color: rgba(255, 255, 255, 0.15);
         }
-        
-        /* Content Styles */
-        .content-header {
-            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-        
-        .content-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .content-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .learn-content {
-            padding: 3rem 0;
+
+        /* Main Content - Coming Soon */
+        .coming-soon-wrapper {
             flex: 1;
-        }
-        
-        /* Table of Contents */
-        .toc {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-        }
-        
-        .toc h2 {
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--teal);
-            padding-bottom: 0.5rem;
-        }
-        
-        .toc-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            list-style: none;
-        }
-        
-        .toc-list a {
-            color: var(--dark-text);
-            text-decoration: none;
-            padding: 1rem;
-            border-left: 4px solid var(--teal);
-            background: var(--off-white);
-            border-radius: 4px;
-            transition: all 0.3s;
-            display: block;
-        }
-        
-        .toc-list a:hover {
-            background: var(--teal);
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        /* Lesson Sections */
-        .lesson-section {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-        
-        .lesson-section h2 {
-            color: var(--navy);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 0.5rem;
-        }
-        
-        .lesson-section h3 {
-            color: var(--teal);
-            margin: 1.5rem 0 1rem 0;
-        }
-        
-        .word-pair {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin: 1rem 0;
-        }
-        
-        .synonym {
-            background: #d4edda;
-            padding: 1rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--teal);
-        }
-        
-        .antonym {
-            background: #f8d7da;
-            padding: 1rem;
-            border-radius: 6px;
-            border-left: 4px solid #e76f51;
-        }
-        
-        .example-box {
-            background: var(--off-white);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--teal);
-            margin: 1rem 0;
-        }
-        
-        .tip-box {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-left: 4px solid var(--gold);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1.5rem 0;
-        }
-        
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border: 1px solid var(--light-gray);
-        }
-        
-        th {
-            background: var(--navy);
-            color: white;
-        }
-        
-        tr:nth-child(even) {
-            background: var(--off-white);
-        }
-        
-        /* Vocabulary Cards */
-        .vocab-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .vocab-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            border: 2px solid var(--light-gray);
-            transition: all 0.3s;
-        }
-        
-        .vocab-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border-color: var(--teal);
-        }
-        
-        .vocab-card h4 {
-            color: var(--navy);
-            margin-bottom: 0.5rem;
-        }
-        
-        .vocab-card .meaning {
-            color: var(--teal);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .vocab-card .example {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Quick Quiz */
-        .quick-quiz {
-            background: var(--off-white);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-            border: 2px solid var(--teal);
-        }
-        
-        .quiz-question {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--navy);
-        }
-        
-        .quiz-options {
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(2rem, 6vw, 4rem) 1rem;
+        }
+
+        .coming-soon-card {
+            background: white;
+            border-radius: 20px;
+            padding: clamp(2.5rem, 6vw, 3.5rem) clamp(2rem, 5vw, 3rem);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .coming-soon-icon {
+            font-size: 4.5rem;
+            color: var(--gold);
             margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
         }
-        
-        .quiz-option {
-            padding: 1rem;
-            border: 2px solid var(--light-gray);
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
-        
-        .quiz-option:hover {
-            border-color: var(--teal);
+
+        .coming-soon-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
         }
-        
-        .quiz-option.selected {
-            border-color: var(--teal);
-            background: #e0f2f1;
+
+        .coming-soon-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
-        
-        .quiz-result {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 6px;
-            display: none;
+
+        .coming-soon-desc {
+            font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+            color: #555;
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
         }
-        
-        .quiz-result.correct {
-            background: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
+
+        .progress-container {
+            background: var(--light-gray);
+            border-radius: 50px;
+            height: 14px;
+            margin: 2rem auto;
+            max-width: 500px;
+            overflow: hidden;
+            position: relative;
         }
-        
-        .quiz-result.incorrect {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
+
+        .progress-fill {
+            background: var(--gradient);
+            height: 100%;
+            width: 0%;
+            border-radius: 50px;
+            animation: fillProgress 2.2s ease-out forwards;
+            animation-delay: 0.5s;
         }
-        
-        /* Navigation Buttons */
+
+        @keyframes fillProgress {
+            to { width: 78%; }
+        }
+
+        .progress-label {
+            font-size: 0.9rem;
+            color: var(--teal);
+            font-weight: 600;
+            margin-top: 0.6rem;
+        }
+
+        .tip-box {
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 14px;
+            padding: 1.5rem;
+            margin: 2.5rem auto 0;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .tip-box::before {
+            content: 'SEDANG DIPROSES';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--navy);
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* Motivational Quote */
+        .motivational-quote {
+            background: var(--gradient);
+            color: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 3rem auto;
+            max-width: 800px;
+            font-style: italic;
+        }
+
+        .quote-text {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .quote-motto {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
         .content-nav {
             display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid var(--light-gray);
+            justify-content: center;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            flex-wrap: wrap;
         }
-        
+
         .nav-button {
             background: var(--navy);
             color: white;
-            padding: 12px 25px;
+            padding: 14px 32px;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-weight: 500;
+            font-size: 1rem;
+            min-width: 180px;
+            justify-content: center;
         }
-        
+
         .nav-button:hover {
             background: var(--teal);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
         }
-        
-        /* Footer Styles */
+
+        /* Footer */
         .main-footer {
-            background-color: var(--navy);
+            background: var(--navy);
             color: white;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: clamp(1.4rem, 3vw, 1.8rem) 0;
             margin-top: auto;
         }
-        
+
         .main-footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
+            opacity: 0.9;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            font-weight: 500;
         }
-        
+
+        .main-footer strong {
+            color: var(--gold);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .header-container {
+            .content-nav {
                 flex-direction: column;
-                text-align: center;
-                gap: 1rem;
+                align-items: center;
+                gap: 1.2rem;
             }
             
-            .main-nav {
-                justify-content: center;
+            .coming-soon-card {
+                padding: 2rem 1.5rem;
             }
             
-            .content-header h1 {
-                font-size: 2rem;
+            .coming-soon-icon {
+                font-size: 3.5rem;
             }
             
-            .toc-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .lesson-section {
-                padding: 1.5rem;
-            }
-            
-            .word-pair {
-                grid-template-columns: 1fr;
-            }
-            
-            .vocab-cards {
-                grid-template-columns: 1fr;
+            .tip-box {
+                margin: 2rem auto 0;
+                padding: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
+
+    <!-- Header -->
     <header class="main-header">
-        <div class="container header-container">
-            <div class="logo">
-                <h1>JIGYASA</h1>
-                <span>Learn, Practice and Achieve.</span>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>JIGYASA</h1>
+                </div>
+                <nav class="main-nav">
+                    <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="back-home">Back to Materi</a>
+                </nav>
             </div>
-            <nav class="main-nav">
-                <a href="../index.html">Home</a>
-                <a href="index.html">Learn</a>
-                <a href="../tryout/index.html">Try Out</a>
-            </nav>
         </div>
     </header>
 
-    <section class="content-header">
-        <div class="container">
-            <h1>Vocabulary & Usage</h1>
-            <p>Perbanyak kosakata, kuasai sinonim-antonim, idioms, collocations, dan strategi memahami vocabulary dalam konteks</p>
-        </div>
-    </section>
+    <!-- Coming Soon Main Content -->
+    <main class="coming-soon-wrapper">
+        <div class="coming-soon-card">
+            <div class="coming-soon-icon">Under Construction</div>
+            <h2 class="coming-soon-title">Coming Soon</h2>
+            <p class="coming-soon-subtitle">Materi Sedang Dalam Proses Pengembangan</p>
+            <p class="coming-soon-desc">
+                Kami sedang mempersiapkan konten premium dengan strategi terbaik, tips jitu, dan pendekatan sistematis 
+                untuk membantu kamu menguasai materi olimpiade bahasa Inggris. 
+                Segera hadir dengan kualitas JIGYASA yang kamu kenal!
+            </p>
 
-    <main class="container">
-        <div class="learn-content">
-            <!-- Table of Contents -->
-            <div class="toc">
-                <h2>📚 Daftar Materi</h2>
-                <ul class="toc-list">
-                    <li><a href="#synonyms-antonyms">Synonyms & Antonyms</a></li>
-                    <li><a href="#idioms">Idioms & Expressions</a></li>
-                    <li><a href="#phrasal-verbs">Phrasal Verbs</a></li>
-                    <li><a href="#collocations">Collocations</a></li>
-                    <li><a href="#word-formation">Word Formation</a></li>
-                    <li><a href="#confusing-words">Confusing Words</a></li>
-                    <li><a href="#context-clues">Context Clues</a></li>
-                    <li><a href="#olympiad-vocab">Olimpiade Vocabulary</a></li>
-                </ul>
+            <div class="progress-container">
+                <div class="progress-fill"></div>
             </div>
+            <p class="progress-label">78% Selesai – Hampir Siap!</p>
 
-            <!-- Synonyms & Antonyms -->
-            <div class="lesson-section" id="synonyms-antonyms">
-                <h2>🔄 Synonyms & Antonyms</h2>
-                
-                <h3>Synonyms (Sinonim)</h3>
-                <div class="word-pair">
-                    <div class="synonym">
-                        <strong>Huge</strong> → Enormous, gigantic, massive
-                    </div>
-                    <div class="synonym">
-                        <strong>Assist</strong> → Help, aid, support
-                    </div>
-                </div>
-
-                <h3>Antonyms (Antonim)</h3>
-                <div class="word-pair">
-                    <div class="antonym">
-                        <strong>Polite</strong> ↔ Rude, impolite
-                    </div>
-                    <div class="antonym">
-                        <strong>Generous</strong> ↔ Selfish, stingy
-                    </div>
-                </div>
-
-                <div class="example-box">
-                    <strong>Contoh Soal Olimpiade:</strong><br>
-                    "The synonym of 'rapidly' is ______"<br>
-                    ✅ <em>quickly</em> (benar)<br>
-                    ❌ slowly, hardly, suddenly (salah)
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Word</th>
-                            <th>Synonyms</th>
-                            <th>Antonyms</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Ancient</strong></td>
-                            <td>old, antique, archaic</td>
-                            <td>modern, new, recent</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Optimistic</strong></td>
-                            <td>hopeful, positive, confident</td>
-                            <td>pessimistic, doubtful, negative</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Scarce</strong></td>
-                            <td>rare, limited, insufficient</td>
-                            <td>abundant, plentiful, ample</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Idioms & Expressions -->
-            <div class="lesson-section" id="idioms">
-                <h2>💬 Idioms & Expressions</h2>
-                
-                <div class="vocab-cards">
-                    <div class="vocab-card">
-                        <h4>Break a leg</h4>
-                        <div class="meaning">Meaning: Good luck! (digunakan untuk memberi semangat)</div>
-                        <div class="example">Example: "Break a leg in your competition tomorrow!"</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Once in a blue moon</h4>
-                        <div class="meaning">Meaning: Very rarely</div>
-                        <div class="example">Example: "I only see him once in a blue moon."</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>By the skin of one's teeth</h4>
-                        <div class="meaning">Meaning: Barely, almost not</div>
-                        <div class="example">Example: "He passed the exam by the skin of his teeth."</div>
-                    </div>
-                </div>
-
-                <div class="tip-box">
-                    <strong>💡 Tips Olimpiade:</strong> Jangan terjemahkan idiom kata per kata!<br>
-                    Pahami makna keseluruhan dari konteks kalimat.
-                </div>
-            </div>
-
-            <!-- Phrasal Verbs -->
-            <div class="lesson-section" id="phrasal-verbs">
-                <h2>⚡ Phrasal Verbs</h2>
-                
-                <h3>Common Phrasal Verbs</h3>
-                <div class="vocab-cards">
-                    <div class="vocab-card">
-                        <h4>Give up</h4>
-                        <div class="meaning">Meaning: Stop trying, quit</div>
-                        <div class="example">Example: "Don't give up on your dreams!"</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Deal with</h4>
-                        <div class="meaning">Meaning: Handle, manage</div>
-                        <div class="example">Example: "We need to deal with this problem quickly."</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Keep an eye on</h4>
-                        <div class="meaning">Meaning: Watch carefully</div>
-                        <div class="example">Example: "Please keep an eye on my bag while I'm away."</div>
-                    </div>
-                </div>
-
-                <div class="example-box">
-                    <strong>Pattern Soal Olimpiade:</strong><br>
-                    "Choose the correct phrasal verb: We need to ______ the problem before it gets worse."<br>
-                    ✅ <em>deal with</em> (benar)<br>
-                    ❌ deal of, deal on, deal to (salah)
-                </div>
-            </div>
-
-            <!-- Collocations -->
-            <div class="lesson-section" id="collocations">
-                <h2>🔗 Collocations</h2>
-                
-                <h3>Verb + Noun Collocations</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Correct</th>
-                            <th>Incorrect</th>
-                            <th>Meaning</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>do homework</strong></td>
-                            <td>make homework</td>
-                            <td>mengerjakan PR</td>
-                        </tr>
-                        <tr>
-                            <td><strong>make a mistake</strong></td>
-                            <td>do a mistake</td>
-                            <td>membuat kesalahan</td>
-                        </tr>
-                        <tr>
-                            <td><strong>pay attention</strong></td>
-                            <td>give attention</td>
-                            <td>memperhatikan</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>Adjective + Noun Collocations</h3>
-                <div class="example-box">
-                    • <strong>Heavy</strong> rain (bukan strong rain)<br>
-                    • <strong>Strong</strong> coffee (bukan heavy coffee)<br>
-                    • <strong>Fast</strong> food (bukan quick food)
-                </div>
-
-                <div class="tip-box">
-                    <strong>🚨 Common Mistake:</strong><br>
-                    <div class="example-box incorrect">
-                        ❌ "I need to <em>make my homework</em>." (salah)
-                    </div>
-                    <div class="example-box correct">
-                        ✅ "I need to <em>do my homework</em>." (benar)
-                    </div>
-                </div>
-            </div>
-
-            <!-- Confusing Words -->
-            <div class="lesson-section" id="confusing-words">
-                <h2>🎯 Confusing Words</h2>
-                
-                <div class="vocab-cards">
-                    <div class="vocab-card">
-                        <h4>Affect vs Effect</h4>
-                        <div class="meaning"><strong>Affect</strong> (verb) = mempengaruhi<br><strong>Effect</strong> (noun) = efek, akibat</div>
-                        <div class="example">"The weather affects my mood." (verb)<br>"The medicine had a good effect." (noun)</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Interesting vs Interested</h4>
-                        <div class="meaning"><strong>Interesting</strong> = menarik<br><strong>Interested</strong> = tertarik</div>
-                        <div class="example">"This book is interesting." (object)<br>"I am interested in this book." (subject)</div>
-                    </div>
-                </div>
-
-                <div class="example-box">
-                    <strong>Contoh Soal Error Recognition:</strong><br>
-                    "I am very <em>interesting</em> in this subject."<br>
-                    ❌ <em>interesting</em> (salah)<br>
-                    ✅ <em>interested</em> (benar)
-                </div>
-            </div>
-
-            <!-- Quick Quiz -->
-            <div class="quick-quiz">
-                <h3>🧠 Quick Quiz - Test Your Vocabulary</h3>
-                <div class="quiz-question">
-                    1. The opposite of "polite" is ______
-                </div>
-                <div class="quiz-options">
-                    <div class="quiz-option" data-value="A">A. friendly</div>
-                    <div class="quiz-option" data-value="B">B. rude</div>
-                    <div class="quiz-option" data-value="C">C. gentle</div>
-                    <div class="quiz-option" data-value="D">D. kind</div>
-                </div>
-
-                <div class="quiz-question">
-                    2. Choose the correct collocation:
-                </div>
-                <div class="quiz-options">
-                    <div class="quiz-option" data-value="A">A. make a homework</div>
-                    <div class="quiz-option" data-value="B">B. do homework</div>
-                    <div class="quiz-option" data-value="C">C. make homeworks</div>
-                    <div class="quiz-option" data-value="D">D. do an homework</div>
-                </div>
-
-                <button onclick="checkQuiz()" class="nav-button">Cek Jawaban</button>
-                <div class="quiz-result" id="quiz-result"></div>
-            </div>
-
-            <!-- Context Clues -->
-            <div class="lesson-section" id="context-clues">
-                <h2>🔍 Context Clues Strategies</h2>
-                
-                <h3>Strategi Menebak Arti Kata</h3>
-                <div class="example-box">
-                    <strong>1. Definition Clue:</strong><br>
-                    "The weather is <em>unpredictable</em> - it cannot be guessed accurately."<br>
-                    → unpredictable = cannot be guessed
-                </div>
-
-                <div class="example-box">
-                    <strong>2. Synonym Clue:</strong><br>
-                    "She felt very <em>upset</em> and sad after hearing the news."<br>
-                    → upset = sad
-                </div>
-
-                <div class="example-box">
-                    <strong>3. Antonym Clue:</strong><br>
-                    "Unlike his <em>generous</em> brother, he was very selfish."<br>
-                    → generous ≠ selfish
-                </div>
-
-                <div class="tip-box">
-                    <strong>💡 Tips Reading Comprehension:</strong><br>
-                    • Baca kalimat sebelum dan sesudah kata yang tidak diketahui<br>
-                    • Cari kata penghubung (like, unlike, similarly, however)<br>
-                    • Perhatikan contoh atau penjelasan yang diberikan
-                </div>
-            </div>
-
-            <!-- Olimpiade Vocabulary -->
-            <div class="lesson-section" id="olympiad-vocab">
-                <h2>🏆 Olimpiade Vocabulary List</h2>
-                
-                <h3>High-Frequency Words in Olympiad</h3>
-                <div class="vocab-cards">
-                    <div class="vocab-card">
-                        <h4>Meticulous</h4>
-                        <div class="meaning">Very careful and precise</div>
-                        <div class="example">Synonym: thorough, careful</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Reliable</h4>
-                        <div class="meaning">Can be trusted or depended on</div>
-                        <div class="example">Synonym: dependable, trustworthy</div>
-                    </div>
-                    
-                    <div class="vocab-card">
-                        <h4>Affordable</h4>
-                        <div class="meaning">Not expensive, reasonable price</div>
-                        <div class="example">Synonym: inexpensive, economical</div>
-                    </div>
-                </div>
-
-                <div class="tip-box">
-                    <strong>🎯 Strategy for Olympiad:</strong><br>
-                    1. Buat flashcards untuk vocabulary sulit<br>
-                    2. Pelajari word families (noun, verb, adjective, adverb)<br>
-                    3. Practice dengan soal-soal vocabulary sebelumnya<br>
-                    4. Perhatikan prefixes dan suffixes untuk menebak arti
-                </div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="content-nav">
-                <a href="grammar.html" class="nav-button">← Grammar & Structure</a>
-                <a href="reading.html" class="nav-button">Reading Comprehension →</a>
+            <div class="tip-box">
+                <p>
+                    <strong>Pantau terus update terbaru!</strong>
+                </p>
             </div>
         </div>
     </main>
 
+    <!-- Motivational Quote -->
+    <div class="motivational-quote">
+        <div class="quote-text">
+            "Setiap materi hebat dimulai dari proses. Sabar, juara sedang dibentuk."
+        </div>
+        <div class="quote-motto">
+            PREPARE • MASTER • DOMINATE • CHAMPION!
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="content-nav">
+        <a href="https://igateshoerny.github.io/jigyasa/learn/index.html" class="nav-button">Menu Learn</a>
+    </div>
+
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
-            <p>&copy; 2025 JIGYASA<br>Developed by Ahmad Zaman Huri</p>
+            <p>© 2025 <strong>JIGYASA</strong><br>
+            Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
         </div>
     </footer>
 
     <script>
-        // Quick Quiz Functionality
-        let selectedOptions = {};
-
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const questionNum = this.closest('.quick-quiz').querySelectorAll('.quiz-question').length > 1 ? 
-                    Array.from(this.closest('.quiz-options').parentElement.parentElement.children).indexOf(this.closest('.quiz-options').parentElement) : 0;
-                
-                // Remove selection from same question
-                this.closest('.quiz-options').querySelectorAll('.quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-                
-                this.classList.add('selected');
-                selectedOptions[questionNum] = this.getAttribute('data-value');
-            });
-        });
-
-        function checkQuiz() {
-            const resultDiv = document.getElementById('quiz-result');
-            const questions = document.querySelectorAll('.quiz-question');
-            
-            if (Object.keys(selectedOptions).length !== questions.length) {
-                resultDiv.textContent = "Jawab semua pertanyaan terlebih dahulu!";
-                resultDiv.className = "quiz-result incorrect";
-                resultDiv.style.display = 'block';
-                return;
-            }
-
-            const correctAnswers = ['B', 'B']; // Answers for question 1 and 2
-            let score = 0;
-            let feedback = "";
-
-            for (let i = 0; i < correctAnswers.length; i++) {
-                if (selectedOptions[i] === correctAnswers[i]) {
-                    score++;
-                    feedback += `✅ Pertanyaan ${i+1}: Benar!<br>`;
-                } else {
-                    feedback += `❌ Pertanyaan ${i+1}: Salah! Jawaban benar: ${String.fromCharCode(65 + correctAnswers[i].charCodeAt(0) - 65)}<br>`;
-                }
-            }
-
-            resultDiv.innerHTML = `<strong>Score: ${score}/${correctAnswers.length}</strong><br><br>${feedback}`;
-            resultDiv.className = score === correctAnswers.length ? "quiz-result correct" : "quiz-result incorrect";
-            resultDiv.style.display = 'block';
-        }
-
-        // Smooth scrolling for table of contents
-        document.querySelectorAll('.toc-list a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            });
+        // Optional smooth reveal
+        window.addEventListener('load', () => {
+            document.querySelector('.coming-soon-card').style.opacity = '1';
+            document.querySelector('.coming-soon-card').style.transform = 'translateY(0)';
         });
     </script>
 </body>

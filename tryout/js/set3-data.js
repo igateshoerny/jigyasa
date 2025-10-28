@@ -2,7 +2,7 @@
 // SET LATIHAN 3 – SIMULATION MODE
 // 50 soal | 90 menit | Pilihan Ganda (A–D)
 
-const quizData = [
+window.quizData = [
   // PART 1 – GRAMMAR AND STRUCTURE (15 soal)
   {
     category: "Grammar",
@@ -158,6 +158,7 @@ const quizData = [
   },
 
   // PART 3 – READING COMPREHENSION (15 soal)
+  // (Saya asumsikan ada teks bacaan, tapi di dokumen Anda truncated. Saya gunakan contoh dari dokumen)
   {
     category: "Reading",
     question: "How many types of ants are in a colony?",
@@ -313,3 +314,8 @@ const quizData = [
     correctAnswer: 1
   }
 ];
+
+window.quizConfig = {
+    timeLimit: 90, // menit
+    setNumber: 3
+};

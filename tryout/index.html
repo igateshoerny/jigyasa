@@ -199,35 +199,36 @@
         }
 
         .btn-start {
-            background: var(--teal);
+            background: linear-gradient(135deg, #2a9d8f, #d4af37);
             color: white;
             font-weight: 600;
-            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-            padding: 0.35rem 1rem;
-            border-radius: 20px;
+            font-size: 1rem;
+            padding: 0.7rem 2rem;
+            border-radius: 30px;
             text-decoration: none;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(42,157,143,0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             display: inline-block;
         }
+
 
         .btn-start::before {
             content: '';
             position: absolute;
             top: 50%; left: 50%;
             width: 0; height: 0;
-            background: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.25);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            transition: width 0.7s ease, height 0.7s ease;
             z-index: 0;
         }
 
         .btn-start:hover::before {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
         }
 
         .btn-start span {
@@ -304,35 +305,37 @@
                 <!-- Set 1 -->
                 <div class="tryout-card">
                     <span class="card-icon">Try Out</span>
-                    <h3>Set 1 - General</h3>
+                    <h3>Set 1</h3>
                     <div class="details">40 soal</div>
                     <div class="action-group">
                         <span class="timer">60 menit</span>
-                        <a href="set1.html" class="btn-start pulse"><span>Start</span></a>
                     </div>
                 </div>
 
                 <!-- Set 2 -->
                 <div class="tryout-card">
                     <span class="card-icon">Try Out</span>
-                    <h3>Set 2 - Advanced</h3>
+                    <h3>Set 2</h3>
                     <div class="details">40 soal</div>
                     <div class="action-group">
-                        <span class="timer">75 menit</span>
-                        <a href="set2.html" class="btn-start pulse"><span>Start</span></a>
+                        <span class="timer">60 menit</span>
                     </div>
                 </div>
 
                 <!-- Set 3 -->
                 <div class="tryout-card">
                     <span class="card-icon">Try Out</span>
-                    <h3>Set 3 - Simulation</h3>
+                    <h3>Set 3 Advanced</h3>
                     <div class="details">50 soal</div>
                     <div class="action-group">
                         <span class="timer">90 menit</span>
-                        <a href="set3.html" class="btn-start pulse"><span>Start</span></a>
                     </div>
                 </div>
+            </div>
+
+            <!-- Prep Button -->
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="https://igateshoerny.github.io/jigyasa/tryout/prep.html" class="btn-start pulse"><span>Prep for test</span></a>
             </div>
         </div>
     </main>

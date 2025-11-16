@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JIGYASA – Informasi Try Out & Form Persiapan</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --navy:#1e3a5f;
@@ -36,7 +37,7 @@
             padding:0 1.2rem;
         }
 
-        /* HEADER JIGYASA */
+        /* HEADER */
         .main-header{
             background:var(--gradient);
             color:white;
@@ -83,7 +84,7 @@
             font-size:0.96rem;
         }
 
-        /* MAIN LAYOUT */
+        /* MAIN CONTENT */
         .info-wrapper{
             max-width:var(--maxw);
             margin:0 auto 2.6rem;
@@ -99,7 +100,7 @@
             gap:2rem;
         }
 
-        /* LEFT COLUMN */
+        /* LEFT */
         .section-title{
             font-family:'Playfair Display',serif;
             font-size:1.25rem;
@@ -132,7 +133,7 @@
         }
         .highlight-box strong{color:var(--navy);}
 
-        /* RIGHT COLUMN – SET CARDS */
+        /* RIGHT SET CARDS */
         .set-column-title{
             font-size:0.95rem;
             font-weight:600;
@@ -159,64 +160,28 @@
         .set-desc{
             font-size:0.86rem;
             color:var(--muted);
+            margin-bottom:0.9rem;
         }
 
-        /* CTA BUTTONS */
-        .cta-row{
-            margin-top:2.1rem;
-            text-align:center;
+        .card-cta{
+            margin-top:0.6rem;
         }
-        .cta-buttons{
-            display:flex;
-            justify-content:center;
-            gap:1.2rem;
-            flex-wrap:nowrap;
-            max-width:100%;
-            margin:1.5rem auto 0;
-        }
-        .btn-main{
+        .btn-card{
             display:inline-block;
-            background:linear-gradient(135deg,#2a9d8f,#d4af37);
+            padding:0.65rem 1.3rem;
+            border-radius:999px;
+            background:linear-gradient(135deg,var(--teal),var(--gold));
             color:white;
             font-weight:600;
-            font-size:0.98rem;
-            padding:0.85rem 2.1rem;
-            border-radius:999px;
-            box-shadow:0 8px 22px rgba(0,0,0,0.16);
-            position:relative;
-            overflow:hidden;
-        }
-        .btn-main::before{
-            content:'';
-            position:absolute;
-            top:50%;left:50%;
-            width:0;height:0;
-            background:rgba(255,255,255,0.22);
-            border-radius:50%;
-            transform:translate(-50%,-50%);
-            transition:width .7s,height .7s;
-        }
-        .btn-main:hover::before{
-            width:260px;
-            height:260px;
-        }
-        .btn-main span{
-            position:relative;
-            z-index:1;
+            font-size:0.92rem;
+            box-shadow:0 8px 20px rgba(0,0,0,0.10);
         }
 
-        .btn-secondary{
-            display:inline-block;
-            border-radius:999px;
-            border:1px solid rgba(18,34,51,0.12);
-            padding:0.8rem 1.8rem;
-            font-size:0.94rem;
-            font-weight:500;
-            color:var(--navy);
-            background:white;
+        @media(max-width:480px){
+            .btn-card{display:block;width:100%;text-align:center;}
         }
 
-        /* FOOTER JIGYASA */
+        /* FOOTER */
         .main-footer{
             margin-top:auto;
             background:var(--navy);
@@ -228,26 +193,10 @@
             font-size:0.9rem;
             opacity:0.95;
         }
-        .main-footer strong{color:var(--gold)}
-
-        /* RESPONSIVE */
-        @media (max-width:900px){
-            .info-grid{grid-template-columns:1fr;}
-        }
-        @media (max-width:480px){
-            .cta-buttons{
-                flex-direction:column;
-                align-items:stretch;
-            }
-            .btn-secondary,
-            .btn-main{
-                width:100%;
-                text-align:center;
-                justify-content:center;
-            }
-        }
+        .main-footer strong{color:var(--gold);}
     </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
@@ -274,7 +223,8 @@
     <!-- MAIN CONTENT -->
     <section class="info-wrapper">
         <div class="info-grid">
-            <!-- LEFT -->
+
+            <!-- LEFT SIDE -->
             <div>
                 <h3 class="section-title">Form Persiapan Peserta</h3>
                 <p class="lead">
@@ -296,24 +246,34 @@
 
                 <div class="highlight-box" style="margin-top:1rem;">
                     Jika dalam <strong>3×24 jam</strong> setelah penyelesaian Try Out Anda belum menerima hasil,
-                    silakan menghubungi <strong>Tim JIGYASA</strong> melalui WhatsApp:silakan menghubungi Tim JIGYASA melalui WhatsApp:
-                    <a href="https://wa.me/628246077307" target="_blank" style="color:var(--teal); font-weight:600; text-decoration:none;">
-                        08246077307</a>.
+                    silakan menghubungi <strong>Tim JIGYASA</strong> melalui WhatsApp:
+                    <a href="https://wa.me/628246077307" target="_blank" style="color:var(--teal);font-weight:600;text-decoration:none;">
+                        08246077307
+                    </a>.
                 </div>
             </div>
 
-            <!-- RIGHT -->
+            <!-- RIGHT SIDE: SET CARDS -->
             <div>
                 <div class="set-column-title">Ringkasan Set Try Out</div>
 
+                <!-- SET 1 -->
                 <div class="set-card">
                     <h3>Set 1</h3>
                     <div class="set-meta">40 soal · 60 menit</div>
                     <div class="set-desc">
                         Penguatan dasar grammar, vocabulary, dan reading comprehension untuk tingkat MTs/SMP.
                     </div>
+                    <div class="card-cta">
+                        <a class="btn-card"
+                           href="https://forms.gle/AtT7y146JPy61FdW8"
+                           target="_blank" rel="noopener noreferrer">
+                            Try Set 1
+                        </a>
+                    </div>
                 </div>
 
+                <!-- SET 2 -->
                 <div class="set-card">
                     <h3>Set 2</h3>
                     <div class="set-meta">40 soal · 60 menit</div>
@@ -321,32 +281,46 @@
                         Soal tingkat menengah dengan kombinasi grammar, vocabulary, error recognition,
                         functional expression, dan reading.
                     </div>
+                    <div class="card-cta">
+                        <a class="btn-card"
+                           href="https://forms.gle/AtT7y146JPy61FdW8"
+                           target="_blank" rel="noopener noreferrer">
+                            Try Set 2
+                        </a>
+                    </div>
                 </div>
 
+                <!-- SET 3 -->
                 <div class="set-card">
                     <h3>Set 3 Advanced</h3>
                     <div class="set-meta">50 soal · 90 menit</div>
                     <div class="set-desc">
-                        Simulasi bergaya TOEFL/olimpiade dengan teks lebih panjang serta opsi jawaban yang lebih menantang.
+                    Simulasi bergaya TOEFL/Olimpiade dengan teks panjang dan opsi jawaban yang lebih menantang.
                     </div>
+            <!-- WARNING khusus Set 3 -->
+                <div style="
+                    background:#fff9e6;
+                    border-left:4px solid var(--gold);
+                    padding:0.6rem 0.8rem;
+                    border-radius:10px;
+                    font-size:0.84rem;
+                    color:#795b00;
+                    margin-bottom:0.8rem;
+                ">
+                ⚠️ <strong>Peringatan:</strong>  
+                Set 3 hanya bisa dikerjakan <strong>1 kali</strong> untuk setiap alamat email.
+                </div>
+
+                <div class="card-cta">
+                <a class="btn-card"
+                 href="https://forms.gle/AtT7y146JPy61FdW8"
+              target="_blank" rel="noopener noreferrer">
+                Try Set 3
+                </a>
+                </div>
                 </div>
             </div>
-        </div>
 
-        <!-- CTA -->
-        <div class="cta-row">
-            <div class="cta-buttons">
-                <a class="btn-secondary" href="https://igateshoerny.github.io/jigyasa/">
-                    Kembali ke Dashboard
-                </a>
-
-                <a class="btn-main"
-                   href="https://forms.gle/AtT7y146JPy61FdW8"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    <span>Buka Form Persiapan</span>
-                </a>
-            </div>
         </div>
     </section>
 

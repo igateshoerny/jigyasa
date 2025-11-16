@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JIGYASA – Informasi Try Out & Form Persiapan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:#1e3a5f;
+            --gold:#d4af37;
+            --teal:#2a9d8f;
+            --teal-light:#4db6ac;
+            --off-white:#f8f9fa;
+            --muted:#556677;
+            --gradient:linear-gradient(135deg,#1e3a5f 0%,#2a9d8f 50%,#d4af37 100%);
+            --shadow-sm:0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md:0 12px 35px rgba(0,0,0,0.10);
+            --maxw:1100px;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{
+            font-family:'Poppins',sans-serif;
+            background:linear-gradient(to bottom,var(--off-white),#eef4f9);
+            color:#122233;
+            min-height:100vh;
+            display:flex;
+            flex-direction:column;
+        }
+        a{color:inherit;text-decoration:none}
+
+        .container{
+            max-width:var(--maxw);
+            margin:0 auto;
+            padding:0 1.2rem;
+        }
+
+        /* HEADER JIGYASA */
+        .main-header{
+            background:var(--gradient);
+            color:white;
+            padding:1rem 0;
+            box-shadow:var(--shadow-sm);
+        }
+        .header-content{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+        .logo h1{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(1.5rem,3vw,2.1rem);
+            letter-spacing:1px;
+        }
+        .header-sub{
+            font-size:0.9rem;
+            opacity:0.9;
+        }
+        .back-link{
+            font-size:0.9rem;
+            font-weight:500;
+            opacity:0.9;
+            transition:opacity .3s;
+        }
+        .back-link:hover{opacity:1}
+
+        /* HERO */
+        .hero{
+            text-align:center;
+            padding:2.5rem 0 1.7rem;
+        }
+        .hero h2{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(1.9rem,3.5vw,2.5rem);
+            color:var(--navy);
+            margin-bottom:0.5rem;
+        }
+        .hero p{
+            color:#555;
+            max-width:650px;
+            margin:0 auto;
+            font-size:0.96rem;
+        }
+
+        /* MAIN LAYOUT */
+        .info-wrapper{
+            max-width:var(--maxw);
+            margin:0 auto 2.6rem;
+            padding:0 1.2rem 2.3rem;
+        }
+        .info-grid{
+            background:white;
+            border-radius:18px;
+            box-shadow:var(--shadow-md);
+            padding:2rem 1.8rem;
+            display:grid;
+            grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+            gap:2rem;
+        }
+
+        /* LEFT COLUMN */
+        .section-title{
+            font-family:'Playfair Display',serif;
+            font-size:1.25rem;
+            color:var(--navy);
+            margin-bottom:0.6rem;
+        }
+        .lead{
+            font-size:0.97rem;
+            color:var(--muted);
+            line-height:1.6;
+            margin-bottom:1rem;
+        }
+        .bullet-list{
+            font-size:0.92rem;
+            color:var(--muted);
+            line-height:1.6;
+            margin-left:1rem;
+        }
+        .bullet-list li{margin-bottom:0.35rem;}
+        .bullet-list strong{color:var(--navy);}
+
+        .highlight-box{
+            margin-top:1.1rem;
+            background:#f7fbff;
+            border-radius:12px;
+            border:1px solid rgba(15,30,50,0.04);
+            padding:0.9rem 1rem;
+            font-size:0.9rem;
+            color:var(--muted);
+        }
+        .highlight-box strong{color:var(--navy);}
+
+        /* RIGHT COLUMN – SET CARDS */
+        .set-column-title{
+            font-size:0.95rem;
+            font-weight:600;
+            color:var(--navy);
+            margin-bottom:0.6rem;
+        }
+        .set-card{
+            background:linear-gradient(180deg,#fbffff,#f5faf8);
+            border-radius:14px;
+            padding:0.9rem 1rem;
+            border:1px solid rgba(20,40,60,0.06);
+            margin-bottom:0.8rem;
+        }
+        .set-card h3{
+            font-size:0.95rem;
+            margin-bottom:0.1rem;
+            color:var(--navy);
+        }
+        .set-meta{
+            font-size:0.85rem;
+            color:#667;
+            margin-bottom:0.25rem;
+        }
+        .set-desc{
+            font-size:0.86rem;
+            color:var(--muted);
+        }
+
+        /* CTA BUTTONS */
+        .cta-row{
+            margin-top:2.1rem;
+            text-align:center;
+        }
+        .cta-buttons{
+            display:flex;
+            justify-content:center;
+            gap:1.2rem;
+            flex-wrap:nowrap;
+            max-width:100%;
+            margin:1.5rem auto 0;
+        }
+        .btn-main{
+            display:inline-block;
+            background:linear-gradient(135deg,#2a9d8f,#d4af37);
+            color:white;
+            font-weight:600;
+            font-size:0.98rem;
+            padding:0.85rem 2.1rem;
+            border-radius:999px;
+            box-shadow:0 8px 22px rgba(0,0,0,0.16);
+            position:relative;
+            overflow:hidden;
+        }
+        .btn-main::before{
+            content:'';
+            position:absolute;
+            top:50%;left:50%;
+            width:0;height:0;
+            background:rgba(255,255,255,0.22);
+            border-radius:50%;
+            transform:translate(-50%,-50%);
+            transition:width .7s,height .7s;
+        }
+        .btn-main:hover::before{
+            width:260px;
+            height:260px;
+        }
+        .btn-main span{
+            position:relative;
+            z-index:1;
+        }
+
+        .btn-secondary{
+            display:inline-block;
+            border-radius:999px;
+            border:1px solid rgba(18,34,51,0.12);
+            padding:0.8rem 1.8rem;
+            font-size:0.94rem;
+            font-weight:500;
+            color:var(--navy);
+            background:white;
+        }
+
+        /* FOOTER JIGYASA */
+        .main-footer{
+            margin-top:auto;
+            background:var(--navy);
+            color:white;
+            text-align:center;
+            padding:1.4rem 0;
+        }
+        .main-footer p{
+            font-size:0.9rem;
+            opacity:0.95;
+        }
+        .main-footer strong{color:var(--gold)}
+
+        /* RESPONSIVE */
+        @media (max-width:900px){
+            .info-grid{grid-template-columns:1fr;}
+        }
+        @media (max-width:480px){
+            .cta-buttons{
+                flex-direction:column;
+                align-items:stretch;
+            }
+            .btn-secondary,
+            .btn-main{
+                width:100%;
+                text-align:center;
+                justify-content:center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <div class="logo"><h1>JIGYASA</h1></div>
+                    <div class="header-sub">Informasi Try Out & Form Persiapan Peserta</div>
+                </div>
+                <a href="https://igateshoerny.github.io/jigyasa/" class="back-link">Kembali ke Dashboard</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h2>Persiapan Sebelum Try Out</h2>
+            <p>Silakan baca informasi di bawah ini sebelum mengisi Form Persiapan dan memilih Set Try Out yang akan diikuti.</p>
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <section class="info-wrapper">
+        <div class="info-grid">
+            <!-- LEFT -->
+            <div>
+                <h3 class="section-title">Form Persiapan Peserta</h3>
+                <p class="lead">
+                    Form ini digunakan untuk mencatat identitas dan pilihan Set Try Out.
+                    Pengisian yang tepat membantu proses koreksi dan pengiriman hasil berjalan lebih cepat dan akurat.
+                </p>
+
+                <ul class="bullet-list">
+                    <li><strong>Diisi sebelum Try Out.</strong> Cukup sekali, kecuali ingin memperbarui data atau mengganti Set.</li>
+                    <li><strong>Gunakan email aktif.</strong> Hasil dan informasi lanjutan akan dikirim ke alamat email tersebut.</li>
+                    <li><strong>Nomor WhatsApp jelas.</strong> Untuk keperluan konfirmasi tambahan oleh Tim JIGYASA jika diperlukan.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong>Catatan penting:</strong>
+                    Untuk <strong>Set 3 Advanced</strong> diberlakukan satu kali pengiriman jawaban per alamat email.
+                    Pastikan Anda siap mengerjakan sebelum memulai set tersebut.
+                </div>
+
+                <div class="highlight-box" style="margin-top:1rem;">
+                    Jika dalam <strong>3×24 jam</strong> setelah penyelesaian Try Out Anda belum menerima hasil,
+                    silakan menghubungi <strong>Tim JIGYASA</strong> melalui WhatsApp:silakan menghubungi Tim JIGYASA melalui WhatsApp:
+                    <a href="https://wa.me/628246077307" target="_blank" style="color:var(--teal); font-weight:600; text-decoration:none;">
+                        08246077307</a>.
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div>
+                <div class="set-column-title">Ringkasan Set Try Out</div>
+
+                <div class="set-card">
+                    <h3>Set 1</h3>
+                    <div class="set-meta">40 soal · 60 menit</div>
+                    <div class="set-desc">
+                        Penguatan dasar grammar, vocabulary, dan reading comprehension untuk tingkat MTs/SMP.
+                    </div>
+                </div>
+
+                <div class="set-card">
+                    <h3>Set 2</h3>
+                    <div class="set-meta">40 soal · 60 menit</div>
+                    <div class="set-desc">
+                        Soal tingkat menengah dengan kombinasi grammar, vocabulary, error recognition,
+                        functional expression, dan reading.
+                    </div>
+                </div>
+
+                <div class="set-card">
+                    <h3>Set 3 Advanced</h3>
+                    <div class="set-meta">50 soal · 90 menit</div>
+                    <div class="set-desc">
+                        Simulasi bergaya TOEFL/olimpiade dengan teks lebih panjang serta opsi jawaban yang lebih menantang.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-row">
+            <div class="cta-buttons">
+                <a class="btn-secondary" href="https://igateshoerny.github.io/jigyasa/">
+                    Kembali ke Dashboard
+                </a>
+
+                <a class="btn-main"
+                   href="https://forms.gle/AtT7y146JPy61FdW8"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    <span>Buka Form Persiapan</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2025 <strong>JIGYASA</strong><br>Dibuat oleh <strong>Ahmad Zaman Huri</strong></p>
+        </div>
+    </footer>
+
+</body>
+</html>
